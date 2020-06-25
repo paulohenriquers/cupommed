@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/content.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./styles/cupons.css">
+    <link rel="stylesheet" href="./styles/modal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <title>Cupom Med</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="./imgs/logo.jpg" alt="Cupom Med">
+
+            <div class="search-input">
+                <img src="./imgs/search.svg" alt="Search">
+                <input type="text" id="search" placeholder="Buscar Serviço. Ex: dentista...">
+            </div>
+
+            <button class="search-button">Criar Cupom</button>
+
+            <span class="car-container">
+                <img src="./imgs/carrinho-de-compras.svg" class="carrinho" />
+                <span class="carrinho-qtd">0</span>
+            </span>
+        </div>
+
+        <div class="navbar">
+            <ul class="menu">
+                <li class="menu-item" id="home">INICIO</li>
+                <li class="menu-item" id="lista-categorias">CATEGORIA</li>
+                <li class="menu-item" id="lista-clinicas">CLÍNICAS</li>
+                <li class="menu-item" id="hoje">CUPONS DO DIA</li>
+            </ul>
+        </div>
+
+        <section class="content">
+            
+        </section>
+
+        <div class="ad">
+            anuncio
+        </div>
+
+        <div class="helper hidden">
+            <div class="helper-header"></div>
+            <div class="cupons-container"></div>
+                <div class="finalizar hidden">
+                    <span id="total">Total:</span>
+                    <button class="comprar">Finalizar compra</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-logo">
+            <img src="./imgs/logo.jpg">
+            <p>&copy; CUPOM MED LTDA, Todos os direitos reservados.</p>
+        </div>
+
+        <div class="sobre">
+            <span>Termos e condições &#8739; Sobre &#8739; Contato</span>
+        </div>
+    </div>
+
+    <div class="modal hidden">
+        <div class="criar-container">
+            <span id="fecha">x</span>
+            <form>
+                <label for="clinica">Selecione a clincia</label>
+                <select name="clincia" id="clinica-select"></select>
+
+                <label for="servico">Informe o serviço</label>
+                <input type="text" name="servico" id="servico-nome" placeholder="Ex: Dentista...">
+                
+                <label for="porcentagem">Informe a porcentagem do desconto</label>
+                <input type="number" name="porcentagem" id="porcento">
+
+                <label for="original">Informe o preço original sem desconto</label>
+                <input type="number" name="original" id="preco">   
+                
+                <button id="criar">Criar</button>
+            </form>
+        </div>
+    </div>
+
+    <script> 
+        $(document).ready( () => {
+            $.post('http://localhost/cupom_med/Php/clinicas.php', resultado => {
+                if( !resultado.startsWith('Nenhuma') ) {
+                    $('#lista-clinicas').append(resultado);
+                    const clinicas = document.querySelector('.clinicas');
+    
+                    clinicas.addEventListener('click', e => {
+                        buscarClinicaPor(e.target.textContent);
+                    });
+                }
+            })
+
+            $.post('http://localhost/cupom_med/Php/categoria.php', resultado => {
+                if( !resultado.startsWith('Nenhuma') ) {
+                    $('#lista-categorias').append(resultado);
+                    const categorias = document.querySelector('.servicos');
+    
+                    categorias.addEventListener('click', e => {
+                        buscarCategoriaPor(e.target.textContent);
+                    });
+                }            
+            })
+        });
+    </script>
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/modal.js"></script>
+    <script src="./scripts/utils.js"></script>
+    <script src="./scripts/carrinho.js"></script>
+</body>
+</html>

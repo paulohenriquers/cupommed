@@ -1,0 +1,28 @@
+body {
+    overflow-x: hidden;
+
+    font-family: 'Montserrat';
+}
+
+.footer {
+    width: 100vw;
+    height: 100px;
+    position: relative;
+
+    background-color: #006cca;
+    padding: 10px 135px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #fff;
+}
+
+.footer-logo img {
+    width: 50px;
+}
+
+.sobre {
+    margin-top: 7%;
+}

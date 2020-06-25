@@ -1,0 +1,71 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background-color: rgba(0, 0, 0, .3);
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.criar-container {
+    position: relative;
+
+    width: 50%;
+    height: 55%;
+    background-color: #fff;
+
+    padding: 20px;
+    border-radius: 5px;
+
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.226);
+}
+
+.criar-container span {
+    cursor: pointer;
+
+    padding: 5px;
+    position: absolute;
+    top: 1%;
+    right: 2%;
+
+}
+
+.criar-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.criar-container form label {
+    margin-top: 3%;
+}
+
+input[type="number"] {
+    width: 50px;
+}
+
+.criar-container form button {
+    width: 100%;
+    height: 40px;
+    margin-top: 3%;
+
+    border: none;
+    border-radius: 5px;
+    background-color: #71a7d6;
+    color: #fff;
+
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.criar-container form button:hover {
+    background-color: #6094c2;
+}
+
+.hidden {
+    display: none;
+}
